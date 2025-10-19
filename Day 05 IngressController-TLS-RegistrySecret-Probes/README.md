@@ -8,6 +8,8 @@ This guide will help you set up Ingress Controllers, generate SSL keys, deploy I
 
 ## Ingress Controllers
 
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.0/deploy/static/provider/cloud/deploy.yaml
+
 ### Steps to Follow:
 
 1. **Generate SSL Keys**
@@ -105,3 +107,4 @@ kubectl create secret docker-registry docker-pwd --docker-username=<your-usernam
 ---
 
 This guide provides a simple walkthrough of setting up Ingress Controllers, generating SSL keys, deploying Ingress Controllers, creating secrets, and configuring Route 53 records. Follow the steps and use the commands provided to successfully set up your Kubernetes environment.
+
