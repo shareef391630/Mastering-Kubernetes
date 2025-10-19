@@ -1,0 +1,34 @@
+🛠️ Step-by-Step: Install Certbot and Generate SSL Certificate
+✅ 1. Install Certbot via Snap
+sudo snap install --classic certbot
+
+
+
+✅ 2. Run Certbot with DNS Challenge
+This command will prompt you to manually add a DNS TXT record to verify domain ownership:
+certbot certonly --manual \
+  --preferred-challenges=dns \
+  --key-type rsa \
+  --email shareef391630@gmail.com \
+  --server https://acme-v02.api.letsencrypt.org/directory \
+  --agree-tos \
+  -d *.kubewithshareef.xyz
+
+
+You can also use -d *.kubewithshareef.xyz if you want a wildcard certificate for all subdomains.
+
+
+🔍 What happens next
+- Certbot will ask you to create a DNS TXT record for _acme-challenge.kubewithshareef.xyz.
+- You’ll log into your DNS provider (e.g., Route 53) and add that record.
+- Once verified, Certbot will generate:
+- privkey.pem — your private key
+- fullchain.pem — your certificate
+
+📦 Optional: Use in Kubernetes
+To use this cert in your cluster:
+kubectl create secret tls kubewithshareef-tls \
+  --cert=fullchain.pem \
+  --key=privkey.pem
+
+
